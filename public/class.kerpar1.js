@@ -1,9 +1,7 @@
-class Kerpar1 {
+class Kerpar1 extends LivingCreature{
 
     constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.index = index;
+        super(x,y,index)
         this.directions = [];
         this.energy1 = 10;
         this.energy2 = 10;
@@ -40,22 +38,9 @@ class Kerpar1 {
         ];
     }
 
-    chooseCell(num) {
+    chooseCell(ch) {
         this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == num) {
-                    found.push([x, y]);
-                }
-                else if (matrix[y][x].index == num) {
-                    found.push([x, y]);
-                }
-            }
-        }
-        return found;
+        return super.chooseCell(ch);
 
     }
 
@@ -81,6 +66,7 @@ class Kerpar1 {
             this.acted = true;
         }
     }
+    
     eat1() {
         if (this.acted == false) {
             var newCell = random(this.chooseCell(1));
@@ -105,9 +91,8 @@ class Kerpar1 {
                 this.mul2();
             }
         }
-
-        //console.log(this.energy1, this.energy2);
     }
+
     eat2() {
         if (this.acted == false) {
             var newCell = random(this.chooseCell(2));
@@ -132,7 +117,6 @@ class Kerpar1 {
                 this.mul1();
             }
         }
-        //console.log(this.energy2);
     }
 
     mul1() {
@@ -147,7 +131,6 @@ class Kerpar1 {
         }
     }
 
-
     mul2() {
         var newCell = random(this.chooseCell(2));
         if (newCell) {
@@ -158,6 +141,7 @@ class Kerpar1 {
             this.energy2 = 10;
         }
     }
+
     die() {
         matrix[this.y][this.x] = 0;
     }
