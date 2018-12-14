@@ -1,4 +1,4 @@
-class Kerpar2 extends LivingCreature{
+module.exports = class Kerpar2 extends LivingCreature{
     constructor(x, y, index) {
         super(x,y,index);
         this.directions = [];

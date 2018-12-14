@@ -1,4 +1,4 @@
-class Kerpar1 extends LivingCreature{
+module.exports = class Kerpar1 extends LivingCreature{
 
     constructor(x, y, index) {
         super(x,y,index)

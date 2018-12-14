@@ -1,3 +1,9 @@
+var Grass = require("./class.grass");
+var GrassEater = require("./class.eatgrass");
+var Gishatich = require("./class.predator");
+var Kerpar1 = require("./class.kerpar1");
+var Kerpar2 = require("./class.kerpar2")
+
 var matrix = [];
 var xotQanak = 2200;
 var xotakerQanak = 700;
