@@ -22,7 +22,7 @@ module.exports = class Kerpar2 extends LivingCreature{
         this.getNewCoordinates();
        return super.chooseCell(ch);
         }
-        move() {
+        move(matrix) {
 
             if (this.acted == false) {
                 var newCell = random(this.chooseCell(0));
@@ -45,7 +45,7 @@ module.exports = class Kerpar2 extends LivingCreature{
             }
         }
     
-    eat() {
+    eat(matrix) {
         if (this.acted == false) {
 
             var newCell = random(this.chooseCell(3));
@@ -67,7 +67,7 @@ module.exports = class Kerpar2 extends LivingCreature{
         }
     }
    
-    die(){
+    die(matrix){
         matrix[this.y][this.x] = 0;
         var datarkner = this.chooseCell(0);
 

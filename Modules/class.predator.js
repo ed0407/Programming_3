@@ -42,7 +42,7 @@ module.exports = class Gishatich extends LivingCreature{
         return super.chooseCell(ch);
     }
 
-    move() {
+    move(matrix) {
         if (this.acted == false) {
             var newCell = random(this.chooseCell(0));
 
@@ -64,7 +64,7 @@ module.exports = class Gishatich extends LivingCreature{
         }
     }
 
-    eat() {
+    eat(matrix) {
         if (this.acted == false) {
             var newCell = random(this.chooseCell(2));
             //console.log(this.energy)
@@ -91,7 +91,7 @@ module.exports = class Gishatich extends LivingCreature{
 
     }
 
-    mul() {
+    mul(matrix) {
         var newCell = random(this.chooseCell(2));
 
         if (newCell) {
@@ -106,7 +106,7 @@ module.exports = class Gishatich extends LivingCreature{
     }
 
 
-    die() {
+    die(matrix) {
         matrix[this.y][this.x] = 0;
 
     }

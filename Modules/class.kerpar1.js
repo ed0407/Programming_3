@@ -45,7 +45,7 @@ module.exports = class Kerpar1 extends LivingCreature{
 
     }
 
-    move() {
+    move(matrix) {
         if (this.acted == false) {
             var newCell = random(this.chooseCell(0));
 
@@ -68,7 +68,7 @@ module.exports = class Kerpar1 extends LivingCreature{
         }
     }
     
-    eat1() {
+    eat1(matrix) {
         if (this.acted == false) {
             var newCell = random(this.chooseCell(1));
             if (newCell) {
@@ -94,7 +94,7 @@ module.exports = class Kerpar1 extends LivingCreature{
         }
     }
 
-    eat2() {
+    eat2(matrix) {
         if (this.acted == false) {
             var newCell = random(this.chooseCell(2));
             if (newCell) {
@@ -120,7 +120,7 @@ module.exports = class Kerpar1 extends LivingCreature{
         }
     }
 
-    mul1() {
+    mul1(matrix) {
         var newCell = random(this.chooseCell(1));
 
         if (newCell) {
@@ -132,7 +132,7 @@ module.exports = class Kerpar1 extends LivingCreature{
         }
     }
 
-    mul2() {
+    mul2(matrix) {
         var newCell = random(this.chooseCell(2));
         if (newCell) {
             var newX = newCell[0];
@@ -143,7 +143,7 @@ module.exports = class Kerpar1 extends LivingCreature{
         }
     }
 
-    die() {
+    die(matrix) {
         matrix[this.y][this.x] = 0;
     }
 
