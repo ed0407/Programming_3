@@ -1,4 +1,9 @@
+function random(arr){
+    var random = Math.floor(Math.random() *arr.length)
+    return arr[random];
+}
 var LivingCreature = require("./class.LivingCreature");
+//var GrassEater = require("./class.eatgrass");
 module.exports = class GrassEater extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
@@ -20,16 +25,16 @@ module.exports = class GrassEater extends LivingCreature {
         ];
     }
 
-    chooseCell(ch) {
+    chooseCell(ch,matrix) {
         this.getNewCoordinates();
-        return super.chooseCell(ch);
+        return super.chooseCell(ch,matrix);
     }
 
 
     move(matrix) {
 
         if (this.acted == false) {
-            var newCell = random(this.chooseCell(0));
+            var newCell = random(this.chooseCell(0,matrix));
 
             if (newCell) {
                 var newX = newCell[0];
@@ -43,20 +48,25 @@ module.exports = class GrassEater extends LivingCreature {
             }
             this.energy--;
             if (this.energy <= 0) {
-                this.die();
+                this.die(matrix);
             }
             this.acted = true;
         }
+        else this.acted = false;
     }
 
 
     eat(matrix) {
         if (this.acted == false) {
 
-            var newCell = (this.chooseCell(1));
+            var newCell = random(this.chooseCell(1,matrix));
+
             if (newCell) {
+                console.log(newCell.length,newCell);
                 var newX = newCell[0];
                 var newY = newCell[1];
+
+                //console.log(newX,newY, newCell);
                 matrix[newY][newX] = matrix[this.y][this.x];
                 matrix[this.y][this.x] = 0;
 
@@ -65,19 +75,21 @@ module.exports = class GrassEater extends LivingCreature {
                 this.y = newY;
                 this.energy++;
                 if (this.energy >= 15) {
-                    this.mul();
+                    this.mul(matrix);
                 }
                 this.acted = true;
 
             }
             else {
-                this.move();
-            }
+                this.move(matrix);
+                
+            } 
         }
+        else this.acted = false;
     }
     mul(matrix) {
 
-        var newCell = random(this.chooseCell(0));
+        var newCell = random(this.chooseCell(0,matrix));
 
         if (newCell) {
             var newX = newCell[0];

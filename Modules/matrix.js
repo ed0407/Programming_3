@@ -6,11 +6,11 @@ var Kerpar2 = require('./class.kerpar2.js')
 
 
 var matrix = [];
-var xotQanak = 10;
-var xotakerQanak = 7;
-var gishatichQanak = 6;
-var kerpar1Qanak = 4;
-var kerpar2Qanak = 2;
+var xotQanak = 25;
+var xotakerQanak = 20;
+var gishatichQanak = 10;
+var kerpar1Qanak = 5;
+var kerpar2Qanak = 3;
 
 var n = 20;
 var m = 20;

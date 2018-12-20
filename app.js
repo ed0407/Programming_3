@@ -14,6 +14,7 @@ app.get('/', function (req, res) {
 });
 
 server.listen(3000);
+//console.log(matrix);
 
 io.on('connection', function (socket) {
 	socket.emit("send matrix", matrix);

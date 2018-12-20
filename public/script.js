@@ -7,12 +7,12 @@
 
 var matrix = [];
 var socket;
+var side = 20;
 // var xotQanak = 2200;
 // var xotakerQanak = 700;
 // var gishatichQanak = 175;
 // var kerpar1Qanak = 150;
 // var kerpar2Qanak = 100;
-// var side = 10;
 // var m = 80;
 // var n = 80;
  //function setup() {

@@ -1,4 +1,10 @@
+function random(arr){
+    var random = Math.floor(Math.random() * arr.length)
+    return arr[random];
+}
 var LivingCreature = require("./class.LivingCreature");
+var Gishatich = require("./class.predator.js");
+var GrassEater = require("./class.eatgrass.js")
 module.exports = class Kerpar1 extends LivingCreature{
 
     constructor(x, y, index) {
@@ -39,15 +45,15 @@ module.exports = class Kerpar1 extends LivingCreature{
         ];
     }
 
-    chooseCell(ch) {
+    chooseCell(ch,matrix) {
         this.getNewCoordinates();
-        return super.chooseCell(ch);
+        return super.chooseCell(ch,matrix);
 
     }
 
     move(matrix) {
         if (this.acted == false) {
-            var newCell = random(this.chooseCell(0));
+            var newCell = random(this.chooseCell(0,matrix));
 
             if (newCell) {
                 var newX = newCell[0];
@@ -62,18 +68,20 @@ module.exports = class Kerpar1 extends LivingCreature{
             this.energy1--;
             this.energy2--;
             if (this.energy1 <= 0 || this.energy2 <= 0) {
-                this.die();
+                this.die(matrix);
             }
             this.acted = true;
         }
+        else this.acted = false;
     }
     
     eat1(matrix) {
         if (this.acted == false) {
-            var newCell = random(this.chooseCell(1));
+            var newCell = random(this.chooseCell(1,matrix));
             if (newCell) {
                 var newX = newCell[0];
                 var newY = newCell[1];
+                console.log(newX,newY)
                 matrix[newY][newX] = matrix[this.y][this.x];
                 matrix[this.y][this.x] = 0;
 
@@ -82,21 +90,22 @@ module.exports = class Kerpar1 extends LivingCreature{
                 this.y = newY;
                 this.energy1++;
                 if (this.energy1 >= 13) {
-                    this.mul1();
+                    this.mul1(matrix);
                 }
                 this.acted = true;
 
             }
             else {
-                this.move();
-                this.mul2();
+                this.move(matrix);
+                this.mul2(matrix);
             }
         }
+        else this.acted = false;
     }
 
     eat2(matrix) {
         if (this.acted == false) {
-            var newCell = random(this.chooseCell(2));
+            var newCell = random(this.chooseCell(2,matrix));
             if (newCell) {
                 var newX = newCell[0];
                 var newY = newCell[1];
@@ -108,20 +117,21 @@ module.exports = class Kerpar1 extends LivingCreature{
                 this.y = newY;
                 this.energy2++;
                 if (this.energy2 >= 13) {
-                    this.mul2();
+                    this.mul2(matrix);
                 }
                 this.acted = true;
 
             }
             else {
-                this.move();
-                this.mul1();
+                this.move(matrix);
+                this.mul1(matrix);
             }
         }
+        else this.acted = false;
     }
 
     mul1(matrix) {
-        var newCell = random(this.chooseCell(1));
+        var newCell = random(this.chooseCell(1,matrix));
 
         if (newCell) {
             var newX = newCell[0];
@@ -133,7 +143,7 @@ module.exports = class Kerpar1 extends LivingCreature{
     }
 
     mul2(matrix) {
-        var newCell = random(this.chooseCell(2));
+        var newCell = random(this.chooseCell(2,matrix));
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
