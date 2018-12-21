@@ -41,10 +41,10 @@ io.on('connection', function (socket) {
                 }
             }
         }
-        console.log(st);
+        //console.log(st);
 
         var myjson = JSON.stringify(st);
-        fs.writeFileSync("package.json", myjson);
+        fs.writeFileSync("statistic.json", myjson);
 
         socket.emit("redraw", matrix);
     }, time);
@@ -52,7 +52,7 @@ io.on('connection', function (socket) {
 
 
 var time = frameRate(1);
-console.log(matrix);
+//console.log(matrix);
 
 function frameRate(frameCount) {
     return 1000 / frameCount;

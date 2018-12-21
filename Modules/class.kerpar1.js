@@ -82,7 +82,7 @@ module.exports = class Kerpar1 extends LivingCreature{
             if (newCell) {
                 var newX = newCell[0];
                 var newY = newCell[1];
-                console.log(newX,newY)
+                //console.log(newX,newY)
                 matrix[newY][newX] = matrix[this.y][this.x];
                 matrix[this.y][this.x] = 0;
 
