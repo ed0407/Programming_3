@@ -197,33 +197,33 @@ function draw() {
     }
 
 
-    textSize(35);
-    fill(0,0,0,);
-    text("Statics",1050,80);
+    // textSize(35);
+    // fill(0,0,0,);
+    // text("Statics",1050,80);
 
-    var yText = 0;
+    // var yText = 0;
 
-    for(var i in st){
-        var xText = 0;
+    // for(var i in st){
+    //     var xText = 0;
 
 
-        if(i == "Grass"){
-            fill("green");
-        }
-        else if(i == "GrassEater"){
-            fill("yellow");
-        }
-        else if(i == "Gishatich"){
-            fill("black");
-        }
-        else if(i == "Kerpar1"){
-            fill("red");
-        }
-        else if(i == "Kerpar2"){
-            fill("LightSkyBlue");
-        }
-        
-    }
+    //     if(i == "Grass"){
+    //         fill("green");
+    //     }
+    //     else if(i == "GrassEater"){
+    //         fill("yellow");
+    //     }
+    //     else if(i == "Gishatich"){
+    //         fill("black");
+    //     }
+    //     else if(i == "Kerpar1"){
+    //         fill("red");
+    //     }
+    //     else if(i == "Kerpar2"){
+    //         fill("LightSkyBlue");
+    //     }
+
+    // }
 }
 
 
