@@ -3,6 +3,7 @@ function random(arr){
     return arr[random];
 }
 var LivingCreature = require("./class.LivingCreature");
+var st = require("./statistic.js");
 module.exports = class Gishatich extends LivingCreature{
     constructor(x, y, index) {
         super(x,y,index);
@@ -83,6 +84,8 @@ module.exports = class Gishatich extends LivingCreature{
                 this.x = newX;
                 this.y = newY;
                 this.energy++;
+                st.GrassEater.current--;
+                st.GrassEater.dead++;
                 if (this.energy >= 28) {
                     this.mul(matrix);
                 }
@@ -105,10 +108,14 @@ module.exports = class Gishatich extends LivingCreature{
 
             matrix[newY][newX] = new Gishatich(newX, newY, 3);
             this.energy = 15;
+            st.Predator.current++;
+            st.Predator.born++;
         }
     }
     die(matrix) {
         matrix[this.y][this.x] = 0;
+        st.Predator.dead++;
+        st.Predator.current--;
 
     }
 

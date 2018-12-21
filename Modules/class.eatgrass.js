@@ -3,6 +3,9 @@ function random(arr){
     return arr[random];
 }
 var LivingCreature = require("./class.LivingCreature");
+
+//var Grass = require("./class.LivingCreature");
+var st = require("./statistic.js");
 //var GrassEater = require("./class.eatgrass");
 module.exports = class GrassEater extends LivingCreature {
     constructor(x, y, index) {
@@ -62,7 +65,7 @@ module.exports = class GrassEater extends LivingCreature {
             var newCell = random(this.chooseCell(1,matrix));
 
             if (newCell) {
-                console.log(newCell.length,newCell);
+                //console.log(newCell.length,newCell);
                 var newX = newCell[0];
                 var newY = newCell[1];
 
@@ -74,6 +77,8 @@ module.exports = class GrassEater extends LivingCreature {
                 this.x = newX;
                 this.y = newY;
                 this.energy++;
+                st.Grass.current--;
+                st.Grass.dead++;
                 if (this.energy >= 15) {
                     this.mul(matrix);
                 }
@@ -98,12 +103,15 @@ module.exports = class GrassEater extends LivingCreature {
             matrix[newY][newX] = new GrassEater(newX, newY, 2);
             this.energy = 0;
 
+            st.GrassEater.born++;
+            st.GrassEater.current++;
         }
-
     }
 
 
     die(matrix) {
+        st.GrassEater.dead++;
+        st.GrassEater.current--;
         matrix[this.y][this.x] = 0;
 
     }

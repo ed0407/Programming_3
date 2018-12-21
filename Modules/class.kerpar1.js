@@ -5,6 +5,7 @@ function random(arr){
 var LivingCreature = require("./class.LivingCreature");
 var Gishatich = require("./class.predator.js");
 var GrassEater = require("./class.eatgrass.js")
+var st = require("./statistic.js");
 module.exports = class Kerpar1 extends LivingCreature{
 
     constructor(x, y, index) {
@@ -89,6 +90,10 @@ module.exports = class Kerpar1 extends LivingCreature{
                 this.x = newX;
                 this.y = newY;
                 this.energy1++;
+
+                st.Grass.current--;
+                st.Grass.dead++;
+
                 if (this.energy1 >= 13) {
                     this.mul1(matrix);
                 }
@@ -116,6 +121,10 @@ module.exports = class Kerpar1 extends LivingCreature{
                 this.x = newX;
                 this.y = newY;
                 this.energy2++;
+
+                st.GrassEater.dead++;
+                st.GrassEater.current--;
+
                 if (this.energy2 >= 13) {
                     this.mul2(matrix);
                 }
@@ -139,6 +148,9 @@ module.exports = class Kerpar1 extends LivingCreature{
 
             matrix[newY][newX] = new GrassEater(newX, newY, 2);
             this.energy1 = 10;
+
+            st.Kerpar1.current++;
+            st.Kerpar1.born++;
         }
     }
 
@@ -150,10 +162,14 @@ module.exports = class Kerpar1 extends LivingCreature{
 
             matrix[newY][newX] = new Gishatich(newX, newY, 3);
             this.energy2 = 10;
+            st.Kerpar1.current++;
+            st.Kerpar1.born++;
         }
     }
 
     die(matrix) {
+        st.Kerpar1.current--;
+        st.Kerpar1.dead++;
         matrix[this.y][this.x] = 0;
     }
 

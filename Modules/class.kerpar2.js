@@ -3,7 +3,8 @@ function random(arr){
     return arr[random];
 }
 var LivingCreature = require("./class.LivingCreature");
-var Grass = require("./class.grass.js")
+var Grass = require("./class.grass.js");
+var st = require("./statistic.js");
 module.exports = class Kerpar2 extends LivingCreature{
     constructor(x, y, index) {
         super(x,y,index);
@@ -66,6 +67,9 @@ module.exports = class Kerpar2 extends LivingCreature{
                 this.y = newY;
                 this.acted = true;
 
+                st.Predator.current--;
+                st.Predator.dead++;
+
             }
             else {
                 this.move(matrix);
@@ -76,6 +80,9 @@ module.exports = class Kerpar2 extends LivingCreature{
    
     die(matrix){
         matrix[this.y][this.x] = 0;
+
+        st.Kerpar2.current--;
+        st.Kerpar2.dead++;
         var datarkner = this.chooseCell(0,matrix);
 
         for(var i in datarkner){

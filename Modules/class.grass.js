@@ -3,6 +3,7 @@ function random(arr){
     return arr[random];
 }
 var LivingCreature = require("./class.LivingCreature");
+var st = require("./statistic.js");
 module.exports = class Grass extends LivingCreature{
     mul(matrix) {
         this.multiply++;
@@ -14,6 +15,9 @@ module.exports = class Grass extends LivingCreature{
 
             matrix[newY][newX] = new Grass(newX, newY, 1);
             this.multiply = 0;
+
+            st.Grass.born++;
+            st.Grass.current++;
 
         }
     }
